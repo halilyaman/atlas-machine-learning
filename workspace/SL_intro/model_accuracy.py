@@ -18,6 +18,15 @@ def mse(actual, predictions):
             sum += (actual[i] - predictions[i]) ** 2
     return sum / len(actual)
 
+
+"""
+The Bias-Variance Trade-Off
+
+E(y0 - f^(x0))^2 = Var(f^(x0)) + [Bias(f(x0))]^2 + Var(e)
+
+Goal is to find low bias and low variance.
+"""
+
 def main():
     # dummy data
     actual_data = [15, 16, 21, 34, 45, 56]
