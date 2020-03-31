@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 """
 Simple Linear Regression
@@ -27,6 +28,13 @@ The least squares approach is used for choosing B0 and B1 to minimize the RSS.
 """
 
 def sim_lin_coefficients(input_data, output_data):
+    """
+    Calculate B0 and B1 based on given dataset.
+
+    :param input_data: predictors
+    :param output_data: observed data
+    :return: B0 and B1
+    """
     if len(input_data) == len(output_data):
         input_average = np.average(input_data)
         output_average = np.average(output_data)
@@ -42,8 +50,38 @@ def sim_lin_coefficients(input_data, output_data):
 
         return b0, b1
 
+def data_processing():
+    """
+    Read data from file and divide it as inputs and outputs
+
+    :return: input and output data
+    """
+    data = pd.read_csv("dataset/StudentsPerformance.csv")
+    input_data = data["math score"]
+    output_data = data["reading score"]
+
+    return input_data, output_data
+
+def plot(x, y, b0, b1):
+    """
+    Plot data points and draw the linear regression line.
+
+    :param x: input data
+    :param y: output data
+    :param b0: intercept
+    :param b1: slope
+    """
+    plt.plot(x, y, "go")
+    plt.plot(x, b0 + x*b1, "r")
+    plt.show()
+
 def main():
-    pass
+    # data pre processing
+    input_data, output_data = data_processing()
+    # calculating coefficients
+    b0, b1 = sim_lin_coefficients(input_data, output_data)
+    # plotting our results
+    plot(input_data, output_data, b0, b1)
 
 
 if __name__ == "__main__":
