@@ -23,13 +23,13 @@ def mse(actual, predictions):
             sum += (actual[i] - predictions[i]) ** 2
     return sum / len(actual)
 
-def error_rate(actual, prediction):
+def training_error(actual, prediction):
     """
     Quantifying the accuracy in classification settings.
 
     Average(I(y_pred != y_true))
 
-    Compare estimated and true value. If y_pred == y_true,
+    Compare estimated and true values. If y_pred == y_true,
     then it is equal to 0, otherwise it is 1.
     """
     sum = 0
@@ -40,7 +40,7 @@ def error_rate(actual, prediction):
     return sum / len(actual)
 
 def main():
-    # dummy data
+    # dummy data for calculating MSE
     actual_data = [15, 16, 21, 34, 45, 56]
     predictions = [15, 19, 23, 30, 49, 55]
     print("MSE:", mse(actual_data, predictions))
@@ -48,7 +48,7 @@ def main():
     # dummy data for classification setting
     cls_actual = ["Left", "Right", "Up", "Down"]
     cls_pred = ["Left", "Down", "Up", "Down"]
-    print("Classification Error:", error_rate(cls_actual, cls_pred))
+    print("Classification Error:", training_error(cls_actual, cls_pred))
 
 
 
