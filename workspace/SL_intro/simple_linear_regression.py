@@ -1,11 +1,9 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
 """
 Simple Linear Regression
 
-Y = B0 + B1*X
+Least square line: (Y = B0 + B1*X)
+Population regression line: (Y = B0 + B1*X + e)
+In real data, population regression line is not known because of error term.
 
 B0 and B1 are coefficients or parameters of the model.
 Training data is used to estimate B0 and B1
@@ -26,6 +24,10 @@ RSS = (y1 - B0 - B1*x1)^2 + (y2 - B0 - B1*x2)^2 + (y3 - B0 - B1*x3)^2 + ...
 
 The least squares approach is used for choosing B0 and B1 to minimize the RSS.
 """
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 def sim_lin_coefficients(input_data, output_data):
     """
@@ -49,6 +51,27 @@ def sim_lin_coefficients(input_data, output_data):
         b0 = output_average - b1 * input_average
 
         return b0, b1
+
+def standard_deviation(data):
+    """
+    Standard deviation is a measure of how spread out values are.
+    It is the square root of variance.
+
+    Variance is calculated by subtracting each values from mean of all values
+    and divide the result by total number of values.
+
+    :param data: data for calculation
+    :return: standard deviation value
+    """
+    mean = np.average(data)
+    diff_square = 0
+
+    for i, v in enumerate(data):
+        diff_square += (v - mean) ** 2
+
+    variance = diff_square / len(data)
+    return np.sqrt(variance)
+
 
 def data_processing():
     """
