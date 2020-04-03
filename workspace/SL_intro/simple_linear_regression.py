@@ -29,6 +29,52 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+def standard_deviation(data):
+    """
+    Standard deviation is a measure of how spread out values are.
+    It is the square root of variance.
+
+    Variance is calculated by subtracting each values from mean of all values
+    and divide the result by total number of values.
+
+    :param data: data that will be observed
+    :return: standard deviation value
+    """
+    mean = np.average(data)
+    diff_square = 0
+
+    for i, v in enumerate(data):
+        diff_square += (v - mean) ** 2
+
+    variance = diff_square / len(data)
+    return np.sqrt(variance)
+
+def rss(data):
+    """
+    Residual sum of squares
+
+    RSS = sum(square(Y_actual - Y_mean))
+    :return: RSS value
+    """
+    mean = np.average(data)
+    rss = 0
+    for _, v in enumerate(data):
+        rss += (v - mean) ** 2
+    return rss
+
+
+
+def rse(data):
+    """
+    Residual standard error
+    Estimation of standard deviation is called as standard error.
+
+    RSE = sqrt(RSS/(n-2))
+    :return: RSE value
+    """
+    return np.sqrt(rss(data) / (len(data) - 2))
+
+
 def sim_lin_coefficients(input_data, output_data):
     """
     Calculate B0 and B1 based on given dataset.
@@ -51,26 +97,6 @@ def sim_lin_coefficients(input_data, output_data):
         b0 = output_average - b1 * input_average
 
         return b0, b1
-
-def standard_deviation(data):
-    """
-    Standard deviation is a measure of how spread out values are.
-    It is the square root of variance.
-
-    Variance is calculated by subtracting each values from mean of all values
-    and divide the result by total number of values.
-
-    :param data: data for calculation
-    :return: standard deviation value
-    """
-    mean = np.average(data)
-    diff_square = 0
-
-    for i, v in enumerate(data):
-        diff_square += (v - mean) ** 2
-
-    variance = diff_square / len(data)
-    return np.sqrt(variance)
 
 
 def data_processing():
