@@ -51,7 +51,7 @@ def standard_deviation(data):
 
 def rss(data):
     """
-    Residual sum of squares
+    Residual Sum Of Squares
 
     RSS = sum(square(Y_actual - Y_mean))
     :return: RSS value
@@ -66,7 +66,7 @@ def rss(data):
 
 def rse(data):
     """
-    Residual standard error
+    Residual Standard Error
     Estimation of standard deviation is called as standard error.
 
     RSE = sqrt(RSS/(n-2))
