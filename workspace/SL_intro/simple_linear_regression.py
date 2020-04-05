@@ -67,7 +67,7 @@ def rss(data):
 def rse(data):
     """
     Residual Standard Error
-    Estimation of standard deviation is called as standard error.
+    Estimation of square of standard deviation is called as standard error.
 
     RSE = sqrt(RSS/(n-2))
     :return: RSE value
