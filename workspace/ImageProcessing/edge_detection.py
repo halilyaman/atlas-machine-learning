@@ -11,7 +11,7 @@ while True:
     sobelx = cv2.Sobel(frame, cv2.CV_8UC1, 1, 0, ksize=5)
     sobely = cv2.Sobel(frame, cv2.CV_8UC1, 0, 1, ksize=5)
 
-    edges = cv2.Canny(frame, 100, 100)
+    edges = cv2.Canny(frame, 100, 150)
 
     # cv2.imshow("Original", frame)
     # cv2.imshow("Laplacian", laplacian)
